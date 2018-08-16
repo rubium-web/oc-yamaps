@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: rubium.yamaps::lang.maps.map
+
+# Model Form Field configuration
+form: $/rubium/yamaps/models/map/fields.yaml
+
+# Model Class name
+modelClass: Rubium\YaMaps\Models\Map
+
+# Default redirect location
+defaultRedirect: rubium/yamaps/maps
+
+# Create page
+create:
+    title: rubium.yamaps::lang.maps.create_map
+    redirect: rubium/yamaps/maps/update/:id
+    redirectClose: rubium/yamaps/maps
+
+# Update page
+update:
+    title: rubium.yamaps::lang.maps.edit_map
+    redirect: rubium/yamaps/maps
+    redirectClose: rubium/yamaps/maps
+
+# Preview page
+preview:
+    title: rubium.yamaps::lang.maps.preview_map

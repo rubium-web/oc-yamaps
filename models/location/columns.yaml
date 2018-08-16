@@ -1,0 +1,12 @@
+# ===================================
+#  List Column Definitions
+# ===================================
+
+columns:
+    name:
+        label: rubium.yamaps::lang.maps.name
+        searchable: true
+
+    address:
+        label: rubium.yamaps::lang.maps.address
+        searchable: true

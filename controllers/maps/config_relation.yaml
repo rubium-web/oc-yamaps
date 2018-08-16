@@ -1,0 +1,14 @@
+# ===================================
+#  Relation Behavior Config
+# ===================================
+
+locations:
+    label: rubium.yamaps::lang.maps.locations
+    view:
+        list: $/rubium/yamaps/models/location/columns.yaml
+        showSearch: true
+        toolbarButtons: add|remove
+    manage:
+        showSearch: true
+        list: $/rubium/yamaps/models/location/columns.yaml
+        form: $/rubium/yamaps/models/location/fields.yaml

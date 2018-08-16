@@ -1,0 +1,29 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: rubium.yamaps::lang.maps.name
+        span: full
+        comment: rubium.yamaps::lang.maps.description_name
+        
+    height:
+        label: rubium.yamaps::lang.maps.height
+        span: left
+        default: 300px
+        tab: rubium.yamaps::lang.maps.dimensions
+        comment: rubium.yamaps::lang.maps.description_height
+
+    width:
+        label: rubium.yamaps::lang.maps.width
+        span: right
+        default: "100%"
+        tab: rubium.yamaps::lang.maps.dimensions
+        comment: rubium.yamaps::lang.maps.description_width
+
+    options:
+        type: yamaps
+        markers: locations
+        editable: false
+        size: full

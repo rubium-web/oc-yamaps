@@ -1,0 +1,54 @@
+# ===================================
+#  Form Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: rubium.yamaps::lang.maps.name
+        span: left
+
+    latlng:
+        label: rubium.yamaps::lang.maps.location
+        type: yamaps
+        span: right
+        height: '450px'
+        comment: rubium.yamaps::lang.maps.description_location
+
+    address:
+        label: rubium.yamaps::lang.maps.address
+        type: yaddress
+        target: Location[latlng]
+        span: left
+        comment: rubium.yamaps::lang.maps.description_address
+
+    marker_type:
+        label: rubium.yamaps::lang.maps.marker_type
+        type: dropdown
+        options:
+            'islands#icon' : rubium.yamapswidgets::lang.marker.standart
+            'islands#dotIcon' : rubium.yamapswidgets::lang.marker.dot
+            'islands#circleIcon' : rubium.yamapswidgets::lang.marker.circle
+            'islands#circleDotIcon' : rubium.yamapswidgets::lang.marker.circle_dot
+        default: 'islands#icon'
+        span: left
+        comment: rubium.yamaps::lang.maps.description_marker_type
+
+    marker_color:
+        label: rubium.yamaps::lang.maps.marker_color
+        type: colorpicker
+        default: '#f52323'
+        span: left
+
+    enable_balloon:
+        label: rubium.yamaps::lang.maps.enable_balloon
+        type: switch
+        default: true
+        span: left
+        comment: rubium.yamaps::lang.maps.description_enable_balloon
+
+    info_window:
+        label: rubium.yamaps::lang.maps.info_window
+        type: Backend\FormWidgets\RichEditor
+        size: huge
+        comment: rubium.yamaps::lang.maps.description_info_window

@@ -1,0 +1,57 @@
+{% if not __SELF__.message %}
+	{% set map = __SELF__.map %}
+	{% set locations = map.locations %}
+	<div id="yMap-{{__SELF__.id}}" style="height: {{map.height}}; width: {{map.width}};"></div>
+	<script>
+	function initialize()
+	{
+		var zoom = "{{__SELF__.property('zoom')}}",
+	    type = "{{__SELF__.property('mapTypeId')}}",
+	    {BalloonLayout, BalloonContentLayout} = YaMapsGetLayoutMap(ymaps),
+	    center = parsePos('{{map.options|raw}}');
+
+	    // Создание карты.    
+	    var yMap = new ymaps.Map("yMap-{{__SELF__.id}}", {
+	        center: center,
+	        zoom: zoom,
+        	type: (type) ? type : "yandex#map"
+	    });
+	    
+	    {% if (__SELF__.property('showMarker')) %}
+		    {% for location in locations %}
+		    	var position_{{location.id}} =  parsePos('{{location.latlng|raw}}');
+
+				var placemark_{{location.id}} = new ymaps.Placemark( position_{{location.id}}, {
+					{% if location.enable_balloon %}
+					balloonHeader: `{{location.name|raw}}`,
+				    balloonContent: `{{location.info_window|raw}}`
+				    {% endif %}
+				}, {
+					{% if location.enable_balloon %}
+					balloonShadow: false,
+				    balloonLayout: BalloonLayout,
+				    balloonContentLayout: BalloonContentLayout,
+				    balloonPanelMaxMapArea: 0,
+				    hideIconOnBalloonOpen: false,
+					balloonOffset: [0, -10],
+				    {% endif %}
+				    preset: "{{location.marker_type}}",
+				    iconColor: '{{location.marker_color}}'
+				});
+		        yMap.geoObjects.add(placemark_{{location.id}});
+		    {% endfor %}
+	    {% endif %}
+	    
+	    {% if (__SELF__.property('fitToView')) %}
+	    yMap.setBounds(yMap.geoObjects.getBounds());
+	    {% endif %}
+
+	}
+	document.addEventListener("DOMContentLoaded", function() {
+		ymaps.ready(initialize);
+	});
+	</script>
+
+{% else %}
+	<p style="color:red">{{ __SELF__.message }}</p>
+{% endif %}

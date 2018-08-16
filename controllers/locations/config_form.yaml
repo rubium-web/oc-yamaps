@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: rubium.yamaps::lang.locations.location
+
+# Model Form Field configuration
+form: $/rubium/yamaps/models/location/fields.yaml
+
+# Model Class name
+modelClass: Rubium\YaMaps\Models\Location
+
+# Default redirect location
+defaultRedirect: rubium/yamaps/locations
+
+# Create page
+create:
+    title: rubium.yamaps::lang.locations.create_location
+    redirect: rubium/yamaps/locations/update/:id
+    redirectClose: rubium/yamaps/locations
+
+# Update page
+update:
+    title: rubium.yamaps::lang.locations.edit_location
+    redirect: rubium/yamaps/locations
+    redirectClose: rubium/yamaps/locations
+
+# Preview page
+preview:
+    title: rubium.yamaps::lang.locations.preview_location
